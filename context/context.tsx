@@ -9,10 +9,7 @@ import {
 	signOut,
 	User as FirebaseUser,
 } from 'firebase/auth';
-// import { useRouter } from 'next/router';
 import { Action } from './reducer';
-
-// type AppState = typeof initialState;
 
 interface ContextInterface {
 	state: AppState;
@@ -25,7 +22,6 @@ interface ContextInterface {
 	signup: (email: string, password: string) => void;
 	login: (email: string, password: string) => void;
 	signout: () => void;
-	// lstostate: (anime: ISingleAnime[]) => void;
 }
 interface AppState {
 	watchlist: ISingleAnime[];
@@ -56,37 +52,12 @@ const defaultState = {
 	signup: () => {},
 	login: () => {},
 	signout: () => {},
-	// lstostate: () => {},
 };
 
 const AppContext = createContext<ContextInterface>(defaultState);
 
 const AppProvider = ({ children }: Props) => {
 	const [state, dispatch] = useReducer(AppReducer, initialState);
-	// const router = useRouter();
-
-	// useEffect(() => {
-	// 	const getUsers = () => {
-	// 		let tsAnimeWatchlist = localStorage.getItem('ts_animeWatchlist');
-	// 		let tsAnimeWatched = localStorage.getItem('ts_animeWatched');
-
-	// 		if (tsAnimeWatchlist) {
-	// 			let asd = JSON.parse(tsAnimeWatchlist);
-	// 			dispatch({ type: 'LSWL_STATE', payload: asd });
-	// 		}
-	// 		if (tsAnimeWatched) {
-	// 			let asd = JSON.parse(tsAnimeWatched);
-	// 			dispatch({ type: 'LSWD_STATE', payload: asd });
-	// 		}
-	// 	};
-
-	// 	getUsers();
-	// }, []);
-
-	// useEffect(() => {
-	// 	localStorage.setItem('ts_animeWatchlist', JSON.stringify(state.watchlist));
-	// 	localStorage.setItem('ts_animeWatched', JSON.stringify(state.watched));
-	// }, [state]);
 
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -102,36 +73,14 @@ const AppProvider = ({ children }: Props) => {
 	// Create new user with email and password
 	const signup = (email: string, password: string) => {
 		return createUserWithEmailAndPassword(auth, email, password);
-		// .then((userCredential) => {
-		// 	// Signed in
-		// 	const user = userCredential.user;
-		// 	console.log(user);
-		// })
-		// .catch((error) => {
-		// 	const errorCode = error.code;
-		// 	const errorMessage = error.message;
-		// 	console.log(`Error Code : ${errorCode}, error Message: ${errorMessage}`);
-		// });
 	};
 
 	const login = (email: string, password: string) => {
 		return signInWithEmailAndPassword(auth, email, password);
-		// .then((userCredential) => {
-		// 	// Signed in
-		// 	const user = userCredential.user;
-		// 	console.log(user);
-		// 	router.push('/');
-		// })
-		// .catch((error) => {
-		// 	const errorCode = error.code;
-		// 	const errorMessage = error.message;
-		// 	console.log(`Error Code : ${errorCode}, error Message: ${errorMessage}`);
-		// });
 	};
 
 	const signout = () => {
 		return signOut(auth);
-		// console.log('asd');
 	};
 
 	// Watchlist
@@ -153,11 +102,7 @@ const AppProvider = ({ children }: Props) => {
 	const deleteFromWatched = (anime: ISingleAnime) => {
 		dispatch({ type: 'DELETE_FROM_WATCHED', payload: anime });
 	};
-	// const lstostate = (arr: ISingleAnime[]) => {
-	// 	dispatch({ type: 'LSWL_STATE', payload: arr });
-	// };
 
-	// return <AppContext.Provider value={{ state, dispatch, addAnimeToWatchlist }}>{children}</AppContext.Provider>;
 	return (
 		<AppContext.Provider
 			value={{
