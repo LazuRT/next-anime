@@ -71,6 +71,7 @@ const Home: NextPage<Props> = ({ TopUpcomingAnime, TopAiringAnime, TopFavorite }
 	const { state } = useGlobalContext();
 
 	const { addItem } = useFirestore(state.user?.uid);
+
 	return (
 		<div>
 			<Head>
