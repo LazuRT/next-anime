@@ -1,0 +1,43 @@
+.main {
+	width: 100%;
+	margin: 0 auto;
+	margin-top: 2rem;
+	h1 {
+		text-align: center;
+	}
+}
+
+@media (min-width: 640px) {
+	.main {
+		max-width: 640px;
+	}
+}
+@media (min-width: 768px) {
+	.main {
+		max-width: 768px;
+
+		.animeInfo {
+			display: flex;
+			flex-direction: row;
+		}
+	}
+}
+@media (min-width: 1024px) {
+	.main {
+		max-width: 1024px;
+	}
+}
+@media (min-width: 1280px) {
+	.main {
+		max-width: 1280px;
+	}
+}
+
+.grid {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-top: 1rem;
+	gap: 0.5rem;
+}

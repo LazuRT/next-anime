@@ -1,0 +1,42 @@
+@use 'mixins';
+
+.card {
+	width: 150px;
+	justify-content: center;
+	/* align-items: center; */
+	text-align: center;
+	transition: transform 0.2s; /* Animation */
+
+	img {
+		width: 100%;
+
+		&:hover {
+			transform: scale(0.95);
+			cursor: pointer;
+		}
+	}
+	@media (min-width: 640px) {
+		width: 200px;
+	}
+}
+
+.button {
+	@include mixins.button;
+
+	padding: 4px 8px;
+	margin-top: 4px;
+
+	// background-color: #75ead4; /* Green */
+	// border: 2px solid #75ead4;
+	// color: white;
+	// text-align: center;
+	// text-decoration: none;
+	// display: inline-block;
+	// transition-duration: 0.4s;
+	// cursor: pointer;
+	// border-radius: 20px;
+
+	// &:hover {
+	// 	background-color: #4ae4c8; /* Green */
+	// }
+}

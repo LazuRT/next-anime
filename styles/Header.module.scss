@@ -1,0 +1,105 @@
+@use 'mixins';
+
+.header {
+	background-color: #373b69;
+	color: white;
+
+	h2 {
+		cursor: pointer;
+		margin-right: 1rem;
+
+		&:hover {
+			color: #75ead4;
+		}
+	}
+}
+.container {
+	width: 100%;
+	text-align: center;
+	padding: 1rem;
+	margin: 0 auto;
+}
+
+.form {
+	flex-grow: 1;
+}
+
+.search {
+	padding: 0.5rem 1rem;
+	border-radius: 5px;
+	background-color: white;
+	border: 2px solid #22254b;
+	font-family: inherit;
+	align-items: center;
+	width: 75%;
+}
+
+.authButton {
+	@include mixins.button;
+	border-radius: 0;
+	padding: 8px 16px;
+	margin-top: 0;
+	font-size: 1rem;
+	font-weight: bold;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+
+	&:hover .dropdownContent {
+		display: block;
+		z-index: 2;
+	}
+}
+.dropdownContent {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+
+	a {
+		color: black;
+		padding: 12px 16px;
+		text-decoration: none;
+		display: block;
+		cursor: pointer;
+
+		&:hover {
+			background-color: #f1f1f1;
+		}
+	}
+}
+
+@media (min-width: 640px) {
+	.container {
+		max-width: 640px;
+	}
+}
+@media (min-width: 768px) {
+	.container {
+		max-width: 768px;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+	.right {
+		display: flex;
+		flex-direction: row;
+	}
+	.form {
+		margin-left: 1rem;
+	}
+}
+@media (min-width: 1024px) {
+	.container {
+		max-width: 1024px;
+	}
+}
+@media (min-width: 1280px) {
+	.container {
+		max-width: 1280px;
+	}
+}

@@ -1,0 +1,20 @@
+@use 'mixins';
+
+// .main {
+// 	width: 100%;
+// 	margin: 0 auto;
+// 	// min-height: 100vh;
+// 	margin-top: 2rem;
+// 	align-items: center;
+// }
+.main {
+	@include mixins.main-container;
+
+	h2 {
+		@include mixins.sectionTitle;
+	}
+}
+
+.grid {
+	@include mixins.grid;
+}

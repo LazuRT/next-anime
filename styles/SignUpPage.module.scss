@@ -1,0 +1,55 @@
+@use 'mixins';
+.main {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+.form {
+	background-color: white;
+	width: 400px;
+	border-radius: 8px;
+	padding: 2rem 4rem;
+	box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+	h1 {
+		margin-bottom: 2rem;
+		text-transform: uppercase;
+	}
+	button {
+		@include mixins.button;
+		background-color: #373b69;
+		border-color: #373b69;
+		width: 100%;
+
+		&:hover {
+			background-color: #1f234b;
+		}
+	}
+	p {
+		color: rgb(167, 165, 165);
+		margin-top: 0.5rem;
+		text-align: center;
+		span {
+			color: #373b69;
+			cursor: pointer;
+		}
+	}
+	.error {
+		color: red;
+	}
+}
+
+.inputContainer {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 1rem;
+
+	label {
+		font-weight: bold;
+	}
+	input {
+		padding: 0.5rem 1rem;
+	}
+}

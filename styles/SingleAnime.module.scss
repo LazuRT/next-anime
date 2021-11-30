@@ -1,0 +1,69 @@
+@use 'mixins';
+@use 'generals';
+
+.main {
+	@include mixins.main-container;
+}
+
+.animeInfo {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	@media (min-width: 768px) {
+		display: flex;
+		flex-direction: row;
+		text-align: left;
+	}
+}
+
+.details {
+	flex-grow: 1;
+}
+
+.imageContainer {
+	margin-right: 2rem;
+}
+
+.buttonContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+// .button {
+// 	@include mixins.button;
+// }
+
+.synopsisContainer {
+	margin-top: 2rem;
+	h2 {
+		@include mixins.sectionTitle;
+	}
+
+	p {
+		padding: 0 0.5rem;
+	}
+}
+
+.recommContainer {
+	margin-top: 2rem;
+	h2 {
+		@include mixins.sectionTitle;
+	}
+}
+
+.trailer {
+	display: flex;
+	justify-content: center;
+	margin-top: 1rem;
+}
+.trailer iframe {
+	width: 640px;
+	height: 480px;
+}
+
+.grid {
+	@include mixins.grid;
+}
