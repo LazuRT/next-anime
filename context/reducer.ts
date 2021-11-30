@@ -1,10 +1,7 @@
 import { ISingleAnime } from '../model';
 import { AppState } from './context';
 import { User as FirebaseUser } from 'firebase/auth';
-// interface AppState {
-// 	watchlist: ISingleAnime[];
-// 	watched: ISingleAnime[];
-// }
+
 export type Action =
 	| { type: 'ADD_TO_WATCHLIST'; payload: ISingleAnime }
 	| { type: 'DELETE_FROM_WATCHLIST'; payload: ISingleAnime }
@@ -19,7 +16,6 @@ export type Action =
 export const AppReducer = (state: AppState, action: Action) => {
 	switch (action.type) {
 		case 'ADD_TO_WATCHLIST':
-			// let baru = { ...action.payload, episode_watched: 1 };
 			return {
 				...state,
 				watchlist: [action.payload, ...state.watchlist],
