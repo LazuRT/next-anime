@@ -17,7 +17,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 	return {
 		props: {
 			data,
-		}, // will be passed to the page component as props
+		},
 	};
 };
 
@@ -121,7 +121,7 @@ const SingleAnimePage = ({ data }: Props) => {
 
 				<div className={style.recommContainer}>
 					<h2>Recommendations</h2>
-					{/* <h2 className="sectionTitle">Recommendations</h2> */}
+
 					{recommsList.length > 0 ? (
 						<div className={style.grid}>
 							{recommsList.map((anime) => {
@@ -129,7 +129,7 @@ const SingleAnimePage = ({ data }: Props) => {
 							})}
 						</div>
 					) : (
-						<h3 className="muted">No Recommendation</h3>
+						<h3>No Recommendation</h3>
 					)}
 				</div>
 			</main>

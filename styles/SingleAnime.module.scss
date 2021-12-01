@@ -53,6 +53,10 @@
 	h2 {
 		@include mixins.sectionTitle;
 	}
+	h3 {
+		color: rgb(148, 147, 147);
+		margin-bottom: 2rem;
+	}
 }
 
 .trailer {

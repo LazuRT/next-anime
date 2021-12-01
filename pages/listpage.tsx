@@ -3,9 +3,11 @@ import { useContext } from 'react';
 import { AppContext } from '../context/context';
 import styles from '../styles/ListPage.module.scss';
 import ListCard from '../components/ListCard';
+import useFirestore from '../hooks/useFirestore';
 
 const ListPage = () => {
 	const { state } = useContext(AppContext);
+	const { loading } = useFirestore(state.user?.uid);
 	const watchlist = state.watchlist;
 	const watched = state.watched;
 
@@ -18,20 +20,33 @@ const ListPage = () => {
 			</Head>
 			<main className={styles.main}>
 				<h2>Your Watchlist</h2>
-				<div className={styles.grid}>
-					{watchlist &&
-						watchlist.map((anime) => {
-							return <ListCard key={anime.mal_id} anime={anime} cardType="watchlistCard" />;
-						})}
-				</div>
-				<h2>Your Watched List</h2>
 
-				<div className={styles.grid}>
-					{watched &&
-						watched.map((anime) => {
-							return <ListCard key={anime.mal_id} anime={anime} cardType="watchedCard" />;
-						})}
-				</div>
+				{loading ? (
+					<h3>Loading...</h3>
+				) : watchlist.length > 0 ? (
+					<div className={styles.grid}>
+						{watchlist &&
+							watchlist.map((anime) => {
+								return <ListCard key={anime.mal_id} anime={anime} cardType="watchlistCard" />;
+							})}
+					</div>
+				) : (
+					<h3>No Item</h3>
+				)}
+
+				<h2>Your Watched List</h2>
+				{loading ? (
+					<h3>Loading...</h3>
+				) : watched.length > 0 ? (
+					<div className={styles.grid}>
+						{watched &&
+							watched.map((anime) => {
+								return <ListCard key={anime.mal_id} anime={anime} cardType="watchedCard" />;
+							})}
+					</div>
+				) : (
+					<h3>No Item </h3>
+				)}
 			</main>
 		</div>
 	);

@@ -16,9 +16,11 @@ import { useGlobalContext } from '../context/context';
 
 const useFirestore = (uid: any) => {
 	const { dispatch } = useGlobalContext();
+	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
 		// const collectionRef = collection(db, `users2/${uid}/watchlist/`);
+		setLoading(true);
 		const q = query(collection(db, `users/${uid}/watchlist/`), orderBy('timeCreated', 'desc'));
 		const unsub = onSnapshot(q, (snap) => {
 			let documents: ISingleAnime[] = [];
@@ -26,7 +28,7 @@ const useFirestore = (uid: any) => {
 				documents.push({ ...doc.data() });
 			});
 			dispatch({ type: 'LSWL_STATE', payload: documents });
-			console.log(documents);
+			setLoading(false);
 		});
 
 		return () => unsub();
@@ -34,6 +36,7 @@ const useFirestore = (uid: any) => {
 
 	useEffect(() => {
 		// const collectionRef = collection(db, `users2/${uid}/watchlist/`);
+		setLoading(true);
 		const q = query(collection(db, `users/${uid}/watched/`), orderBy('timeCreated', 'desc'));
 		const unsub = onSnapshot(q, (snap) => {
 			let documents: ISingleAnime[] = [];
@@ -41,7 +44,7 @@ const useFirestore = (uid: any) => {
 				documents.push({ ...doc.data() });
 			});
 			dispatch({ type: 'LSWD_STATE', payload: documents });
-			console.log(documents);
+			setLoading(false);
 		});
 
 		return () => unsub();
@@ -82,7 +85,7 @@ const useFirestore = (uid: any) => {
 		}
 	};
 
-	return { addItem, deleteItem, moveItem };
+	return { loading, addItem, deleteItem, moveItem };
 };
 
 export default useFirestore;
