@@ -2,8 +2,6 @@ import Head from 'next/head';
 import { useContext } from 'react';
 import { AppContext } from '../context/context';
 import styles from '../styles/ListPage.module.scss';
-import ResultCard from '../components/ResultCard';
-import AnimeGrid from '../components/AnimeGrid';
 import ListCard from '../components/ListCard';
 
 const ListPage = () => {
@@ -20,7 +18,6 @@ const ListPage = () => {
 			</Head>
 			<main className={styles.main}>
 				<h2>Your Watchlist</h2>
-				{/* <AnimeGrid data={watchlist} cardType="watchlistCard" /> */}
 				<div className={styles.grid}>
 					{watchlist &&
 						watchlist.map((anime) => {
@@ -29,7 +26,6 @@ const ListPage = () => {
 				</div>
 				<h2>Your Watched List</h2>
 
-				{/* <AnimeGrid data={watched} cardType="watchedCard" /> */}
 				<div className={styles.grid}>
 					{watched &&
 						watched.map((anime) => {

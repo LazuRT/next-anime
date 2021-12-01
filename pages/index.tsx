@@ -7,13 +7,11 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation } from 'swiper';
 
 import ResultCard from '../components/ResultCard';
-import AnimeGrid from '../components/AnimeGrid';
 import { useGlobalContext } from '../context/context';
 
 import 'swiper/css';
 import 'swiper/css/bundle';
 import 'swiper/css/navigation';
-import useFirestore from '../hooks/useFirestore';
 
 SwiperCore.use([Navigation]);
 
@@ -69,8 +67,6 @@ const swiperBreakpoints = {
 const Home: NextPage<Props> = ({ TopUpcomingAnime, TopAiringAnime, TopFavorite }: Props) => {
 	// const Home = <T extends Anime>({ topAnime }: Props<T> & { children?: ReactNode }) => {
 	const { state } = useGlobalContext();
-
-	const { addItem } = useFirestore(state.user?.uid);
 
 	return (
 		<div>

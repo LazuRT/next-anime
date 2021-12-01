@@ -6,7 +6,6 @@ import styles from '../../styles/SearchPage.module.scss';
 import { GetServerSideProps } from 'next';
 
 import ResultCard from '../../components/ResultCard';
-import AnimeGrid from '../../components/AnimeGrid';
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 	const { searchQuery } = query;

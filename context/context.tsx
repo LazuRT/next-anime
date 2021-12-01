@@ -62,7 +62,6 @@ const AppProvider = ({ children }: Props) => {
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (user) => {
 			dispatch({ type: 'SET_ACTIVE_USER', payload: user });
-			console.log(user);
 			dispatch({ type: 'SET_LOADING_FALSE' });
 		});
 		return () => {

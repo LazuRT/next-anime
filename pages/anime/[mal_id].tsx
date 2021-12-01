@@ -1,10 +1,9 @@
 import Head from 'next/head';
 import React, { useContext, useEffect, useState } from 'react';
-import { AppContext } from '../../context/context';
+// import { AppContext } from '../../context/context';
 import style from '../../styles/SingleAnime.module.scss';
 import { GetServerSideProps } from 'next';
-import { ISearchAnime, ISingleAnime } from '../../model';
-import AnimeGrid from '../../components/AnimeGrid';
+import { ISingleAnime } from '../../model';
 import ResultCard from '../../components/ResultCard';
 import { useGlobalContext } from '../../context/context';
 
