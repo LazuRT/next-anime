@@ -12,6 +12,7 @@
 
 .main {
 	@include mixins.main-container;
+	min-height: 100vh;
 }
 
 .topSection {

@@ -9,6 +9,7 @@
 // }
 .main {
 	@include mixins.main-container;
+	min-height: 100vh;
 
 	h2 {
 		@include mixins.sectionTitle;
