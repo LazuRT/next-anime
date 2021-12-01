@@ -17,30 +17,6 @@ import { useGlobalContext } from '../context/context';
 const useFirestore = (uid: any) => {
 	const { dispatch } = useGlobalContext();
 
-	// useEffect(() => {
-	// 	const watchlistQuery = query(collection(db, `users/${uid}/watchlist/`), orderBy('timeCreated', 'desc'));
-	// 	const watchedQuery = query(collection(db, `users/${uid}/watched/`), orderBy('timeCreated', 'desc'));
-	// 	const unsub = onSnapshot(watchlistQuery, (snap) => {
-	// 		let documents: ISingleAnime[] = [];
-	// 		snap.forEach((doc: any) => {
-	// 			documents.push({ ...doc.data() });
-	// 		});
-	// 		dispatch({ type: 'LSWL_STATE', payload: documents });
-	// 	});
-	// 	const unsub2 = onSnapshot(watchedQuery, (snap) => {
-	// 		let documents: ISingleAnime[] = [];
-	// 		snap.forEach((doc: any) => {
-	// 			documents.push({ ...doc.data() });
-	// 		});
-	// 		dispatch({ type: 'LSWD_STATE', payload: documents });
-	// 	});
-
-	// 	return () => {
-	// 		unsub();
-	// 		unsub2();
-	// 	};
-	// }, [uid]);
-
 	useEffect(() => {
 		// const collectionRef = collection(db, `users2/${uid}/watchlist/`);
 		const q = query(collection(db, `users/${uid}/watchlist/`), orderBy('timeCreated', 'desc'));
